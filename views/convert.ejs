@@ -1,0 +1,28 @@
+<%- include('partials/header', { title: 'Convert Lyrics', user: user }) %>
+
+<div class="container">
+  <h1>🎤 Translate Lyrics</h1>
+
+  <form action="/lyrics/translate" method="POST">
+    <label for="lyrics">Enter Original Lyrics</label>
+    <textarea id="lyrics" name="lyrics" rows="6" required placeholder="Type or paste your lyrics here..."></textarea>
+
+    <label for="targetLang">Translate to:</label>
+    <select id="targetLang" name="targetLang" required>
+      <option value="">-- Select Language --</option>
+      <option value="English">English</option>
+      <option value="Hindi">Hindi</option>
+      <option value="Punjabi">Punjabi</option>
+      
+    </select>
+
+    <button type="submit" class="btn"> Translate</button>
+  </form>
+
+  <div style="margin-top: 25px ">
+    <a href="/lyrics/dashboard" class="btn">🏠 Back to Dashboard</a>
+    <a href="/logout" class="btn red "> Logout</a>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,14 @@
+<%- include('partials/header', { title: 'Dashboard', user: user }) %>
+
+<div class="container">
+  <h1> Welcome, <%= user.fullname %>!</h1>
+  <p>You are logged in. Choose an action below:</p>
+
+  <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 25px; underline:none;">
+    <a href="/lyrics/convert" class="btn"> Translate Lyrics</a>
+    <a href="/lyrics/saved" class="btn"> View Saved Lyrics</a>
+    <a href="/logout" class="btn red"> Logout</a>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

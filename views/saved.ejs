@@ -1,0 +1,26 @@
+<%- include('partials/header', { title: 'Saved Lyrics', user: user }) %>
+
+<div class="container">
+  <h1>📜 Saved Lyrics</h1>
+
+  <% if (lyrics.length === 0) { %>
+    <p>No lyrics saved yet.</p>
+  <% } else { %>
+    <% lyrics.forEach(item => { %>
+      <div class="lyric-box">
+        <h3>Original:</h3>
+        <pre><%= item.originalLyrics %></pre>
+
+        <h3>Translated:</h3>
+        <pre><%= item.translatedLyrics %></pre>
+
+        <a href="/lyrics/delete/<%= item._id %>" class="btn red">🗑️ Delete</a>
+        <hr>
+      </div>
+    <% }) %>
+  <% } %>
+
+  <a href="/lyrics/dashboard" class="btn">⬅ Back to Dashboard</a>
+</div>
+
+<%- include('partials/footer') %>

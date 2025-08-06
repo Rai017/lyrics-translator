@@ -1,0 +1,46 @@
+<%- include('partials/header', { title: 'Lyrics Translate', user: user }) %>
+
+<div class="container">
+  <h1>Lyrics Translator</h1>
+
+  <!-- Form to enter lyrics and select language -->
+  <form action="/lyrics/translate" method="POST">
+    <label for="lyrics">Enter Lyrics:</label>
+    <textarea name="lyrics" id="lyrics" required rows="4" cols="50"><%= typeof original !== 'undefined' ? original : '' %></textarea>
+
+    <label for="targetLang">Translate to:</label>
+    <select name="targetLang" id="targetLang" required>
+      <option value="">Select Language</option>
+      <option value="Hindi" <%= targetLang === 'Hindi' ? 'selected' : '' %>>Hindi</option>
+      <option value="English" <%= targetLang === 'English' ? 'selected' : '' %>>English</option>
+      <option value="Punjabi" <%= targetLang === 'Punjabi' ? 'selected' : '' %>>Punjabi</option>
+    </select>
+
+    <button type="submit">Translate</button>
+  </form>
+
+  <!-- Show result after translation -->
+  <% if (translated) { %>
+    <h2>Translation Result</h2>
+
+    <h3>Original:</h3>
+    <pre><%= original %></pre>
+
+    <h3>Translated:</h3>
+    <pre><%= translated %></pre>
+
+    <!-- Save button -->
+    <form action="/lyrics/save" method="POST">
+      <input type="hidden" name="originalLyrics" value="<%= original %>">
+      <input type="hidden" name="translatedLyrics" value="<%= translated %>">
+      <button type="submit">Save</button>
+    </form>
+  <% } %>
+
+  <div style="margin-top: 30px;">
+    <a href="/lyrics/saved" class="btn">View Saved Lyrics</a>
+    <a href="/lyrics/dashboard" class="btn">Back to Dashboard</a>
+  </div>
+</div>
+
+<%- include('partials/footer') %>
